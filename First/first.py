@@ -18,6 +18,7 @@ from sklearn.preprocessing import scale
 from sklearn.mixture import GaussianMixture
 # import cv2
 import matplotlib
+import scipy.special as special
 
 
 # Code exp 1
@@ -207,90 +208,119 @@ import matplotlib
 #     plt.show()
 
 
-# Gini 系数的生成
+# # Gini 系数的生成
+# if __name__ == "__main__":
+#     p = np.arange(0.001, 1, 0.001, dtype=np.float)
+#     gini = 2 * p * (1-p)
+#     h = -(p * np.log2(p) + (1-p) * np.log2(1-p))/2
+#     err = 1 - np.max(np.vstack((p, 1-p)), 0)
+#     plt.plot(p, h, 'b-', linewidth=2, label="Entropy")
+#     plt.plot(p, gini, 'r-', linewidth=2, label="Gini")
+#     plt.plot(p, err, 'g-.', linewidth=1, label="Error")
+#     plt.grid(True)
+#     plt.legend(loc='upper left')
+#     plt.show()
+
+
+# # gamma
+# if __name__ == "__main__":
+#     N = 5
+#     x = np.linspace(0, N, 50)
+#     y = special.gamma(x+1)
+#     plt.figure(facecolor='w')
+#     plt.plot(x, y, 'r-', lw=2)
+#     z = np.arange(0, N+1)
+#     f = special.factorial(z, exact=True)  # 阶乘
+#     print(f)
+#     plt.plot(z, f, 'go', markersize=8)
+#     plt.grid(b=True)
+#     plt.xlim(-0.1, N+0.1)
+#     plt.ylim(0.5, np.max(y)*1.05)
+#     plt.xlabel(u'X', fontsize=15)
+#     plt.ylabel(u'Gamma(X) - 阶乘', fontsize=15)
+#     plt.title(u'阶乘和Gamma函数', fontsize=16)
+#     plt.show()
+
+# if __name__ == "__main__":
+#     fig = plt.figure()
+#     ax = fig.add_subplot(111)
+#     u = np.linspace(0,4,1000)
+#     x,y=np.meshgrid(u,u)
+#     z = np.log(np.exp(x) + np.exp(y))
+#     ax.contourf(x,y,z,100)
+#     plt.show()
+
+# Taylor 展开计算圆周率
 if __name__ == "__main__":
-    p = np.arange(0.001, 1, 0.001, dtype=np.float)
-    gini = 2 * p * (1-p)
-    h = -(p * np.log2(p) + (1-p) * np.log2(1-p))/2
-    err = 1 - np.max(np.vstack((p, 1-p)), 0)
-    plt.plot(p, h, 'b-', linewidth=2, label="Entropy")
-    plt.plot(p, gini, 'r-', linewidth=2, label="Gini")
-    plt.plot(p, err, 'g-.', linewidth=1, label="Error")
-    plt.grid(True)
-    plt.legend(loc='upper left')
-    plt.show()
+    print(np.sqrt(6 * np.sum(1/np.arange(1, 100000, dtype=np.float) ** 2)))
 
+    # data= 2*np.random.rand(100000,2)-1
+    # print(data)
+    # x=(data[:,0])
+    # y=(data[:,1])
+    # idx= x**2+ y**2 < 1
+    # hole= x**2+ y**2 < 0.25
+    # idx = np.logical_and(idx,~hole)
+    # plt.plot(x[idx],y[idx],'go',markersize=1)
 
-# data= 2*np.random.rand(100000,2)-1
-# print(data)
-# x=(data[:,0])
-# y=(data[:,1])
-# idx= x**2+ y**2 < 1
-# hole= x**2+ y**2 < 0.25
-# idx = np.logical_and(idx,~hole)
-# plt.plot(x[idx],y[idx],'go',markersize=1)
+    # p = np.random.rand(10000)
+    # np.set_printoptions(edgeitems=5000,suppress=True)
+    # plt.hist(p,bins=20,color="g",edgecolor="k")
+    # plt.show()
 
+    # N = 10000
+    # times = 100
+    # z = np.zeros(N)
+    # for i in range(times):
+    #   z += np.random.rand(N)
+    # z /= times
+    # plt.hist(z,bins=20,color='m',edgecolor='k')
+    # plt.show()
 
-# p = np.random.rand(10000)
-# np.set_printoptions(edgeitems=5000,suppress=True)
-# plt.hist(p,bins=20,color="g",edgecolor="k")
-# plt.show()
+    # d = np.random.rand(3,4)
+    # print(d)
+    # print(type(d))
+    # data = pd.DataFrame(data = d,columns=list('梅兰竹菊'))
+    # print('='*50)
+    # print(data)
+    # print(type(data))
+    # print(data[list('兰菊')])
+    # data.to_csv('data.csv',index=False,header=True)
+    # print('file save success')
 
-# N = 10000
-# times = 100
-# z = np.zeros(N)
-# for i in range(times):
-#   z += np.random.rand(N)
-# z /= times
-# plt.hist(z,bins=20,color='m',edgecolor='k')
-# plt.show()
+    # # [-4,2]
+    # d= np.random.rand(100)*6 - 4
+    # print(d)
+    # plt.plot(d,'r.')
+    # plt.show()
 
-# d = np.random.rand(3,4)
-# print(d)
-# print(type(d))
-# data = pd.DataFrame(data = d,columns=list('梅兰竹菊'))
-# print('='*50)
-# print(data)
-# print(type(data))
-# print(data[list('兰菊')])
-# data.to_csv('data.csv',index=False,header=True)
-# print('file save success')
+    # # x = np.arange(0,1,0.000001)
+    # x = np.linspace(0,1,10)
+    # print(x)
+    # y = x ** x
+    # plt.plot(x,y,'r-',linewidth=3)
+    # plt.show()
 
-# # [-4,2]
-# d= np.random.rand(100)*6 - 4
-# print(d)
-# plt.plot(d,'r.')
-# plt.show()
+    # x = np.arange(0.05,3,0.05)
+    # y1 = [math.log(a,1.5) for a in x]
+    # plt.plot(x,y1,linewidth=2,color="#007500", label="log1.5(x)")
+    # y2 = [math.log(a,2) for a in x]
+    # plt.plot(x,y2,linewidth=2,color="#9f35ff",label="log2(x)")
+    # y3 = [math.log(a,3)for a in x]
+    # plt.plot(x,y3,linewidth=2,color="#f75000",label="log3(x)")
+    # plt.legend(loc="lower right")
+    # plt.grid(True)
+    # plt.show()
 
-# # x = np.arange(0,1,0.000001)
-# x = np.linspace(0,1,10)
-# print(x)
-# y = x ** x
-# plt.plot(x,y,'r-',linewidth=3)
-# plt.show()
+    # image = cv2.imread('lena.png')
+    # print(image)
+    # print(type(image))
+    # print(image.shape)
 
+    # a = Image.open('lena.png')
+    # print(a)
+    # b = np.array(a)
+    # print(b)
+    # print(type(b))
 
-# x = np.arange(0.05,3,0.05)
-# y1 = [math.log(a,1.5) for a in x]
-# plt.plot(x,y1,linewidth=2,color="#007500", label="log1.5(x)")
-# y2 = [math.log(a,2) for a in x]
-# plt.plot(x,y2,linewidth=2,color="#9f35ff",label="log2(x)")
-# y3 = [math.log(a,3)for a in x]
-# plt.plot(x,y3,linewidth=2,color="#f75000",label="log3(x)")
-# plt.legend(loc="lower right")
-# plt.grid(True)
-# plt.show()
-
-# image = cv2.imread('lena.png')
-# print(image)
-# print(type(image))
-# print(image.shape)
-
-
-# a = Image.open('lena.png')
-# print(a)
-# b = np.array(a)
-# print(b)
-# print(type(b))
-
-# %%
+    # %%
